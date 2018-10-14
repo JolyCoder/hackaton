@@ -31,5 +31,16 @@ export default StyleSheet.create({
     },
     test: {
         margin: '2%'
+    },
+    cardM: {
+        margin: '2%',
+        float: 'left'
+    },
+    modal: {
+        marginTop: '2%',
+        marginLeft: '1%'
+    },
+    button: {
+        marginTop: '2%'
     }
 })

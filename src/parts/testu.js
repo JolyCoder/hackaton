@@ -130,12 +130,12 @@ class TestU extends Component{
                         <Item.Group>
                             {this.state.arr.map((item, index) => (
                                 <Item key={index} className={css(styles.item)}>
-                                <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+                                <Item.Image size='tiny' src={item.img} />
                                         <Item.Content>
                                             <Item.Header as='a'>{item.name}</Item.Header>
                                             <Item.Meta>Description</Item.Meta>
                                             <Item.Description>{item.text}</Item.Description>
-                                            <Modal name={item.name} trigger={<Button className={css(styles.button)}>Пройти курс</Button>} onOpen={this.openHandle}>
+                                            <Modal name={item.name} trigger={<Button className={css(styles.button)}>Читать теорию</Button>} onOpen={this.openHandle}>
                                                 <Modal.Header>{item.name}</Modal.Header>
                                                 <p className={css(styles.text)}>{this.state.data}</p>
                                             </Modal>

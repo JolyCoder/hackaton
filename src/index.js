@@ -14,6 +14,7 @@ import MyCab from './parts/mycab'
 import Tests from './parts/tests'
 import TestU from './parts/testu'
 import Fl from './parts/fl'
+import Main from './parts/main'
 
 const initState = {
     session: {
@@ -37,7 +38,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <div>
-                <Route exact path='/' component={App} />
+                <Route exact path='/' component={MyCab} />
                 <Route path='/reg' component={Register} />
                 <Route path='/login' component={Login} />
                 <Route path='/mycab' component={MyCab} />
