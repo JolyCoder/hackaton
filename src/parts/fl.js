@@ -66,6 +66,7 @@ class Fl extends Component {
     handleClick = (event, data) => {
         alert('Вы отправили заявку!')
     }
+    //
     handleOpen = (event, data) => {
         if(localStorage.getItem('session') == "true"){
             var self = this;
