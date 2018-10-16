@@ -22,7 +22,7 @@ class Fl extends Component {
             pl1.set('login', localStorage.getItem('user'))
             Axios({
                 method: 'post',
-                url: 'http://localhost:8888/back/getUser.php',
+                url: '/back/getUser.php',
                 data: pl1,
                 config: { headers: {'Content-Type': 'multipart/form-data' }}
             }).then(function(response){
@@ -35,7 +35,7 @@ class Fl extends Component {
             pl.set('get', 'post');
             Axios({
                 method: 'post',
-                url: 'http://localhost:8888/back/getFl.php',
+                url: '/back/getFl.php',
                 data: pl,
                 config: { headers: {'Content-Type': 'multipart/form-data' }}
             }).then(function(response){
@@ -47,7 +47,7 @@ class Fl extends Component {
                     pl.set('comp', response.data[i].company)
                     Axios({
                         method: 'post',
-                        url: 'http://localhost:8888/back/getCompInf.php',
+                        url: '/back/getCompInf.php',
                         data: pl,
                         config: { headers: {' Content-Type': 'multipart/form-data' }}
                     }).then(function(responseS){
@@ -65,6 +65,20 @@ class Fl extends Component {
     }
     handleClick = (event, data) => {
         alert('Вы отправили заявку!')
+        var pl = new FormData();
+        pl.set('login', localStorage.getItem('user'))
+        pl.set('zv', data.nz)
+        console.log(data)
+        Axios({
+            method: 'post',
+            url: "/back/addZv.php",
+            data: pl,
+            config: { headers: {' Content-Type': 'multipart/form-data' }}
+        }).then(function(response){
+            console.log(response)
+        }).catch(function(error){
+            console.log(error)
+        })
     }
     //
     handleOpen = (event, data) => {
@@ -75,7 +89,7 @@ class Fl extends Component {
             console.log('o', data)
             Axios({
                 method: 'post',
-                url: 'http://localhost:8888/back/getFlText.php',
+                url: '/back/getFlText.php',
                 data: pl,
                 config: { headers: {' Content-Type': 'multipart/form-data' }}
             }).then(function(response){
@@ -116,7 +130,7 @@ class Fl extends Component {
                                                  <h3>Зарплата: {item.zarp} рублей</h3>
                                                  <h3>Необходимый рейтинг: <font color={this.state.rating < parseInt(item.rating) ? 'red' : 'green'}>{item.rating}</font></h3>
                                                  <h3>Описание: </h3> <h4>{this.state.text != undefined ? this.state.text.text : null}</h4>
-                                                 <Button className={css(styles.button)} onClick={this.handleClick}>Отправить заявку!</Button>
+                                                 <Button nz={item.name} className={css(styles.button)} onClick={this.handleClick}>Отправить заявку!</Button>
                                              </div>
                                         </Modal>
                                     </Item.Content>

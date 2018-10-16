@@ -14,7 +14,7 @@ class TestU extends Component{
         payload.set('name', data.name)
         Axios({
             method: "post",
-            url: "http://localhost:8888/back/getTextTest.php",
+            url: "/back/getTextTest.php",
             data: payload,
             config: { headers: {' Content-Type': 'multipart/form-data' }}
         }).then(function(response){
@@ -31,7 +31,7 @@ class TestU extends Component{
         payload.set('name', data.name)
         Axios({
             method: "post",
-            url: "http://localhost:8888/back/grtTestB.php",
+            url: "/back/grtTestB.php",
             data: payload,
             config: { headers: {' Content-Type': 'multipart/form-data' }}
         }).then(function(response){
@@ -52,7 +52,7 @@ class TestU extends Component{
             payload.set('get', 'list');
             Axios({
                 method: 'post',
-                url: "http://localhost:8888/back/getTestList.php",
+                url: "/back/getTestList.php",
                 data: payload,
                 config: { headers: {' Content-Type': 'multipart/form-data' }}
             }).then(function(response){
@@ -65,7 +65,7 @@ class TestU extends Component{
             pl.set('login', localStorage.getItem('user'))
             Axios({
                 method: 'post',
-                url: "http://localhost:8888/back/getTests.php",
+                url: "/back/getTests.php",
                 data: pl,
                 config: { headers: {' Content-Type': 'multipart/form-data' }}
             }).then(function(response){
@@ -110,7 +110,7 @@ class TestU extends Component{
         console.log(data)
         Axios({
             method: 'post',
-            url: 'http://localhost:8888/back/addTest.php',
+            url: '/back/addTest.php',
             data: payload,
             config: { headers: {' Content-Type': 'multipart/form-data' }}
         }).then(function(response){

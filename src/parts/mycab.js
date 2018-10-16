@@ -20,7 +20,7 @@ class MyCab extends Component{
             console.log(payload)
             Axios({
                 method: "post",
-                url: "http://localhost:8888/back/getUser.php",
+                url: "/back/getUser.php",
                 data: payload,
                 config: { headers: {' Content-Type': 'multipart/form-data' }}
             }).then(function(response){
@@ -33,9 +33,9 @@ class MyCab extends Component{
             })
             Axios({
                 method: 'post',
-                url: 'http://localhost:8888/back/getTests.php',
+                url: '/back/getTests.php',
                 data: payload,
-                config: { headers: {' Content-Type': 'multipart/form-data' }}
+                config: { headers: {'Content-Type': 'multipart/form-data' }}
             }).then(function(response){
                 console.log(response)
                 self.setState({['arrUser']: response.data})
@@ -43,6 +43,19 @@ class MyCab extends Component{
                 console.log(error)
             })
         }
+        var pl = new FormData();
+        pl.set('login', localStorage.getItem('user'))
+        console.log(localStorage.getItem('user'))
+        Axios({
+            method: 'post',
+            url: "/back/getZv.php",
+            data: pl,
+            config: { headers: {' Content-Type': 'multipart/form-data' }}
+        }).then(function(response){
+            self.setState({['arrZv']: response.data})
+        }).catch(function(error){
+            console.log(error)
+        })
     }
     render(){
         const extra = (
@@ -68,10 +81,16 @@ class MyCab extends Component{
                     <div className={css(styles.map)}>
                         <h2>Пройденные курсы</h2>
                         <ul>
-                            {console.log('arr', this.state.arrUser)}
                             {this.state.arrUser.map((item, index) =>(
                                 <li key={index}><h3>{item}</h3></li>
                             ))}
+                        </ul>
+                        <h2>Ваши заявки: </h2>
+                        <ul>
+                            {console.log(this.state.arrZv)}
+                            {this.state.arrZv != undefined && this.state.arrZv != false && this.state.arrZv != "false"  ? this.state.arrZv.map((item, index) =>(
+                                    <li key={index}><h3>{item}</h3></li>
+                            )) : null}
                         </ul>
                     </div>
                 </div>

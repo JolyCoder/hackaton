@@ -18,7 +18,7 @@ class Tests extends Component{
         console.log(this)
         Axios({
             method: 'post',
-            url: 'http://localhost:8888/back/addTest.php',
+            url: '/back/addTest.php',
             data: payload,
             config: { headers: {' Content-Type': 'multipart/form-data' }}
         }).then(function(response){

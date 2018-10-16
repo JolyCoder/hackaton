@@ -16,7 +16,7 @@ class Login extends Component{
         var self = this
         Axios({
             method: 'post',
-            url: 'http://localhost:8888/back/auth.php',
+            url: '/back/auth.php',
             data: payload,
             config: { headers: {' Content-Type': 'multipart/form-data' }}
         }).then(function(response){

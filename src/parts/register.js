@@ -19,7 +19,7 @@ class Register extends Component{
         payload.set('password', this.state.pass)
         Axios({
             method: 'post',
-            url: 'http://localhost:8888/back/regs.php',
+            url: '/back/regs.php',
             data: payload,
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         }).then(function(response){
